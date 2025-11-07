@@ -1,13 +1,13 @@
-#ifndef LOSPLAYER_H
-#define LOSPLAYER_H
+#pragma once
 
 #include <QMainWindow>
+#include<QMouseEvent>
+#include<QGraphicsDropShadowEffect>
 
-QT_BEGIN_NAMESPACE
 namespace Ui {
 class LosPlayer;
 }
-QT_END_NAMESPACE
+
 
 class LosPlayer : public QMainWindow
 {
@@ -15,9 +15,17 @@ class LosPlayer : public QMainWindow
 
 public:
     LosPlayer(QWidget *parent = nullptr);
+
     ~LosPlayer();
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
+private:
+    void initConnect();
+    void initUi();
 
 private:
     Ui::LosPlayer *ui;
+    QPoint l_point;
 };
-#endif // LOSPLAYER_H
+
