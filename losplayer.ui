@@ -14,7 +14,7 @@
    <string>LosPlayer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color:black;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="background">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -102,10 +102,7 @@
           <item>
            <widget class="QLabel" name="logo">
             <property name="styleSheet">
-             <string notr="true">#logo{
-	background-color: #F0F0F0;
-
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>  ©LosPlayer</string>
@@ -118,9 +115,7 @@
        <item>
         <widget class="QWidget" name="headRight" native="true">
          <property name="styleSheet">
-          <string notr="true">#headRight{
-	background-color: #F5F5F5;
-}</string>
+          <string notr="true"/>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="spacing">
@@ -174,18 +169,7 @@
              <item>
               <widget class="QLineEdit" name="searchEdit">
                <property name="styleSheet">
-                <string notr="true">#searchEdit{
-	background-color: #E3E3E3;
-	border: none;
-	border-radius:10px;
-	padding: 7px;
-}
-
-
-
-
-
-</string>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -195,14 +179,7 @@
           <item>
            <widget class="QWidget" name="setting" native="true">
             <property name="styleSheet">
-             <string notr="true">QPushButton{
-	border:none;
-	background-color: rgb(129, 216, 207);
-}
-
-QPushButton:hover{
-	background-color: rgb(159, 246, 237);
-}</string>
+             <string notr="true"/>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
@@ -339,10 +316,7 @@ QPushButton:hover{
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#bodyLeftBox{
-
-
-}</string>
+          <string notr="true"/>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <property name="spacing">
@@ -413,13 +387,21 @@ QPushButton:hover{
                  </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="recommand" native="true"/>
+                 <widget class="BtFrom" name="recommand" native="true">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                 </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="audio" native="true"/>
+                 <widget class="BtFrom" name="audio" native="true">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                 </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="musicHall" native="true"/>
+                 <widget class="BtFrom" name="musicHall" native="true"/>
                 </item>
                </layout>
               </widget>
@@ -431,20 +413,20 @@ QPushButton:hover{
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <item>
-                 <widget class="QLabel" name="label_3">
+                 <widget class="QLabel" name="myMusicLabel">
                   <property name="text">
                    <string>我的音乐</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QWidget" name="like" native="true"/>
+                 <widget class="BtFrom" name="like" native="true"/>
                 </item>
                 <item>
-                 <widget class="QWidget" name="local" native="true"/>
+                 <widget class="BtFrom" name="local" native="true"/>
                 </item>
                 <item>
-                 <widget class="QWidget" name="recent" native="true"/>
+                 <widget class="BtFrom" name="recent" native="true"/>
                 </item>
                </layout>
               </widget>
@@ -492,17 +474,123 @@ QPushButton:hover{
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <widget class="QWidget" name="recommandPage">
-             <widget class="QLabel" name="label_8">
+             <widget class="QScrollArea" name="scrollAreaForRecommandPage">
               <property name="geometry">
                <rect>
-                <x>340</x>
-                <y>350</y>
+                <x>0</x>
+                <y>9</y>
+                <width>991</width>
+                <height>591</height>
+               </rect>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContentsForRecommandPage">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>989</width>
+                 <height>589</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QLabel" name="recommandText">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>推荐</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="todayRecommandText">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>18</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>今日为你推荐</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="RecBox" name="todayRecommandBox" native="true"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="supplyText">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>18</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>音乐补给</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="RecBox" name="supplyBox" native="true"/>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="audioPage">
+             <widget class="QLabel" name="label_2">
+              <property name="geometry">
+               <rect>
+                <x>180</x>
+                <y>290</y>
                 <width>53</width>
                 <height>15</height>
                </rect>
               </property>
               <property name="text">
-               <string>recommandPage</string>
+               <string>audioPage</string>
               </property>
              </widget>
             </widget>
@@ -563,21 +651,6 @@ QPushButton:hover{
               </property>
               <property name="text">
                <string>recentPage</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="audioPage">
-             <widget class="QLabel" name="label_2">
-              <property name="geometry">
-               <rect>
-                <x>180</x>
-                <y>290</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>audioPage</string>
               </property>
              </widget>
             </widget>
@@ -658,6 +731,9 @@ QPushButton:hover{
              </item>
              <item>
               <widget class="QWidget" name="play2" native="true">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <layout class="QHBoxLayout" name="horizontalLayout_8">
                 <item>
                  <widget class="QPushButton" name="playModeBtn">
@@ -778,6 +854,9 @@ QPushButton:hover{
              </item>
              <item>
               <widget class="QWidget" name="play3" native="true">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <layout class="QHBoxLayout" name="horizontalLayout_9">
                 <item>
                  <widget class="QLabel" name="spaceLabel">
@@ -887,6 +966,20 @@ QPushButton:hover{
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BtFrom</class>
+   <extends>QWidget</extends>
+   <header location="global">btfrom.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RecBox</class>
+   <extends>QWidget</extends>
+   <header location="global">recbox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -2,7 +2,13 @@
 
 #include <QMainWindow>
 #include<QMouseEvent>
+#include <QStyle>
 #include<QGraphicsDropShadowEffect>
+#include <QRandomGenerator>
+#include <QJsonObject>
+#include <QJsonArray>
+#include"common/myLog.h"
+#include"style/style.h"
 
 namespace Ui {
 class LosPlayer;
@@ -23,8 +29,16 @@ protected:
 private:
     void initConnect();
     void initUi();
+    QJsonArray initNameAndPng();
+    QString generateRandStr(int lenth);
+
+
+public slots:
+    void onGetPageid(int page_id);
 
 private:
+    QMap<int,QString> btnIdAndName;
+    QString lastBtn;
     Ui::LosPlayer *ui;
     QPoint l_point;
 };
