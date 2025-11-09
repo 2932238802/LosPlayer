@@ -88,6 +88,7 @@ void LosPlayer::initConnect()
     connect(ui->recent,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
     connect(ui->minBtn,&QPushButton::clicked,this,&LosPlayer::onMinimizeButtonClicked);
     connect(ui->volume,&QPushButton::clicked,this,&LosPlayer::onVolumeClicked);
+    connect(ui->addLocalBtn,&QPushButton::clicked,this,&LosPlayer::onAddLocalBtnClicked);
 }
 
 void LosPlayer::initUi()
@@ -268,8 +269,47 @@ void LosPlayer::onVolumeClicked()
 ///
 void LosPlayer::onAddLocalBtnClicked()
 {
+    QFileDialog fileDialog(this);
+
+    // 设置窗口标题
+    fileDialog.setWindowTitle("添加本地下载音乐");
+
+
+    QDir curDir = QDir::current();
+    curDir.cdUp();
+    curDir.cdUp();
+
+    QString path = curDir.absolutePath();
+
+    // 设置过滤方式
+    fileDialog.setDirectory(path);
+
+    // 设置可以 一次打开多个
+    fileDialog.setFileMode(QFileDialog::ExistingFiles);
+
+    // fileDialog.setNameFilter("代码文件(*.h *.c *.)")
+
+    QStringList mimes;
+    mimes<< "application/octet-stream";
+
+    fileDialog.setMimeTypeFilters(mimes);
+
+    if(QDialog::Accepted == fileDialog.exec())
+    {
+        QList<QUrl> fileUrls = fileDialog.selectedUrls();
+
+        // 内部存放的是文件的路径
+
+        // 将文件信息
+
+        // 保存到本地下载界面
+
+        //
+        l_musicList.addMusic(fileUrls);
+    }
 
 }
+
 ////////////////////////////
 
 

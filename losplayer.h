@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <qfiledialog.h>
+#include "musicList.h"
 #include "volumeTool.h"
 #include"common/myLog.h"
 #include"style/style.h"
@@ -48,5 +49,8 @@ private:
 
     VolumeTool* volumeTool;
     bool volumeIsShow =false;
+
+    MusicList l_musicList;
+
 };
 
