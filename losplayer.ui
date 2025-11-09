@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
+    <width>1000</width>
     <height>800</height>
    </rect>
   </property>
@@ -28,7 +28,7 @@
      <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>0</number>
+     <number>10</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
@@ -229,7 +229,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>大</string>
+                <string>小</string>
                </property>
               </widget>
              </item>
@@ -248,7 +248,7 @@
                 </size>
                </property>
                <property name="text">
-                <string>小</string>
+                <string>大</string>
                </property>
               </widget>
              </item>
@@ -479,7 +479,7 @@
                <rect>
                 <x>0</x>
                 <y>9</y>
-                <width>991</width>
+                <width>800</width>
                 <height>591</height>
                </rect>
               </property>
@@ -491,7 +491,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>989</width>
+                 <width>798</width>
                  <height>589</height>
                 </rect>
                </property>
@@ -579,85 +579,15 @@
               </widget>
              </widget>
             </widget>
-            <widget class="QWidget" name="audioPage">
-             <widget class="QLabel" name="label_2">
-              <property name="geometry">
-               <rect>
-                <x>180</x>
-                <y>290</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>audioPage</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="musicHallPage">
-             <widget class="QLabel" name="label_6">
-              <property name="geometry">
-               <rect>
-                <x>300</x>
-                <y>340</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>musicHallPage</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="likePage">
-             <widget class="QLabel" name="label_4">
-              <property name="geometry">
-               <rect>
-                <x>210</x>
-                <y>360</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>likePage</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="localPage">
-             <widget class="QLabel" name="label_5">
-              <property name="geometry">
-               <rect>
-                <x>360</x>
-                <y>390</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>localPage</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="recentPage">
-             <widget class="QLabel" name="label_7">
-              <property name="geometry">
-               <rect>
-                <x>230</x>
-                <y>340</y>
-                <width>53</width>
-                <height>15</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>recentPage</string>
-              </property>
-             </widget>
-            </widget>
+            <widget class="QWidget" name="audioPage"/>
+            <widget class="QWidget" name="musicHallPage"/>
+            <widget class="CommonPage" name="likePage"/>
+            <widget class="CommonPage" name="localPage"/>
+            <widget class="CommonPage" name="recentPage"/>
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="progressBar" native="true">
+           <widget class="MusicSlider" name="progressBar" native="true">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -960,7 +890,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1000</width>
      <height>20</height>
     </rect>
    </property>
@@ -970,13 +900,25 @@
   <customwidget>
    <class>BtFrom</class>
    <extends>QWidget</extends>
-   <header location="global">btfrom.h</header>
+   <header>btfrom.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>RecBox</class>
    <extends>QWidget</extends>
-   <header location="global">recbox.h</header>
+   <header>recbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CommonPage</class>
+   <extends>QWidget</extends>
+   <header location="global">commonpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MusicSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">musicslider.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

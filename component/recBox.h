@@ -4,7 +4,8 @@
 #include "style/style.h"
 #include "RecBoxItem.h"
 #include <QJsonArray>
-#include<QJsonObject>
+#include <QJsonObject>
+#include <QLayout>
 
 namespace Ui {
 class RecBox;
@@ -21,10 +22,16 @@ public:
 
 private:
     void createRecBoxItem();
+    void onLeftBtnClicked();
+    void onRightBtnClicked();
+    void initConnect();
+    void clearLayout(QLayout* layout);
 
 
 private:
     Ui::RecBox *ui;
+    int currentIndex;
+    int count;
     QJsonArray l_btnTextAndText;
     int cols;
     int rows;

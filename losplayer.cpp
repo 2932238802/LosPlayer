@@ -86,6 +86,8 @@ void LosPlayer::initConnect()
     connect(ui->musicHall,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
     connect(ui->audio,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
     connect(ui->recent,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
+    connect(ui->minBtn,&QPushButton::clicked,this,&LosPlayer::onMinimizeButtonClicked);
+    connect(ui->volume,&QPushButton::clicked,this,&LosPlayer::onVolumeClicked);
 }
 
 void LosPlayer::initUi()
@@ -132,11 +134,21 @@ void LosPlayer::initUi()
     ui->recent->setSelfStyle("最近","recent~");
     ui->recent->setPageId(5);
 
-
-    ui->scrollAreaWidgetContentsForRecommandPage->setStyleSheet(COMMAND_PAGE_STYLE);\
-
+    // 推荐界面的设置
+    ui->scrollAreaWidgetContentsForRecommandPage->setStyleSheet(COMMAND_PAGE_STYLE);
     ui->todayRecommandBox->initRecBoxUi(initNameAndPng(),1);
     ui->supplyBox->initRecBoxUi(initNameAndPng(),2);
+
+    // commanPage界面设置
+    ui->likePage->setMusicPageUi("我喜欢",":/png/likePage.png");
+    ui->localPage->setMusicPageUi("本地",":/png/localPage.png");
+    ui->recentPage->setMusicPageUi("最近",":/png/recentPage.png");
+
+
+    volumeTool = new VolumeTool(this);
+
+    volumeTool->hide();
+
 }
 ////////////////////////////
 
@@ -213,5 +225,58 @@ void LosPlayer::onGetPageid(int page_id)
         lastBtn = newBtnName;
     }
 }
+////////////////////////////
+
 
 ////////////////////////////
+/// \brief LosPlayer::onMinimizeButtonClicked
+///
+void LosPlayer::onMinimizeButtonClicked()
+{
+    this->showMinimized();
+}
+////////////////////////////
+
+
+
+////////////////////////////
+/// \brief LosPlayer::onVolumeClicked
+///
+void LosPlayer::onVolumeClicked()
+{
+    if(volumeTool->isVisible())
+    {
+        LOG() << "音量键 隐藏";
+        volumeTool->hide();
+
+    }
+    else{
+        QPoint volumeGlobalPos = ui->volume->mapToGlobal(QPoint(0, 0));
+        int globalX = volumeGlobalPos.x() + ui->volume->width() / 2 - volumeTool->width() / 2;
+        int globalY = volumeGlobalPos.y() - volumeTool->height() - 5;
+        QPoint globalTargetPos(globalX, globalY);
+        volumeTool->move(globalTargetPos);
+        LOG() << "音量键 显示";
+        volumeTool->show();
+    }
+}
+////////////////////////////
+
+
+////////////////////////////
+/// \brief LosPlayer::onAddLocalBtnClicked
+///
+void LosPlayer::onAddLocalBtnClicked()
+{
+
+}
+////////////////////////////
+
+
+
+
+
+
+
+
+

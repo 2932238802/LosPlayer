@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>png/likePage.png</file>
+        <file>png/localPage.png</file>
+        <file>png/recentPage.png</file>
+    </qresource>
+</RCC>

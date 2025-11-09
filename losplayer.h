@@ -7,6 +7,8 @@
 #include <QRandomGenerator>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <qfiledialog.h>
+#include "volumeTool.h"
 #include"common/myLog.h"
 #include"style/style.h"
 
@@ -32,14 +34,19 @@ private:
     QJsonArray initNameAndPng();
     QString generateRandStr(int lenth);
 
-
 public slots:
     void onGetPageid(int page_id);
+    void onMinimizeButtonClicked();
+    void onVolumeClicked();
+    void onAddLocalBtnClicked();
 
 private:
     QMap<int,QString> btnIdAndName;
     QString lastBtn;
     Ui::LosPlayer *ui;
     QPoint l_point;
+
+    VolumeTool* volumeTool;
+    bool volumeIsShow =false;
 };
 

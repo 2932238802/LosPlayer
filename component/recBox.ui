@@ -118,7 +118,11 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="recListUpHlayout"/>
+          <layout class="QHBoxLayout" name="recListUpHlayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -142,7 +146,11 @@
           <number>0</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="recListDoneHlayout"/>
+          <layout class="QHBoxLayout" name="recListDownHlayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>

@@ -101,6 +101,105 @@ inline const QString RECBOX_BTN = R"(
 
 
 
+/////////////////////////// -- commonPage
+inline QString COMMON_PAGE_PLAYBTN = R"(
+    #playBtn{
+        border-radius: 5px;
+        background-color: #8fb2c9;
+    }
+
+    #playBtn:hover
+    {
+        background-color: rgb(163,198,221);
+    }
+)";
+
+inline QString COMMON_PAGE_TITLESTYLE = R"(
+    #pageTitle{
+        color: #000000;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 3px;
+    }
+)";
+
+inline QString LIST_ITEM_VIP_LABEL = R"(
+    #vipLabel{
+        border: 1px solid #1ECD96;
+        color: #1ECD96;
+        border-radius: 2px;
+    }
+)";
+
+inline QString LIST_ITEM_SQ_LABAL = R"(
+    #sqLabel{
+        border: 1px solid #FF6600;
+        color: #FF6600;
+        border-radius: 2px;
+    }
+)";
+
+inline const QString LISTITEM_STYLE = R"(
+    #ListItem{
+        background-color: #FFFFFF;
+    }
+
+
+    #ListItem:hover{
+        background-color: rgb(241,147,156);
+    }
+)";
+
+inline const QString MUSIC_SLIDER = R"(
+    #inLine{
+        background-color: #EBEEF5;
+    }
+    #outLine{
+        background-color: #1ECC94;
+    }
+
+)";
+
+
+inline const QString  VOLUME_TOOL = R"(
+
+    #volumeBox{
+        background-color: #F5F5F5;
+        border-radius: 5px;
+        border: 2px solid #1d242b;
+    }
+
+    #slienceBtn{
+        border: none;
+    }
+
+    #slienceBtn:hover{
+        border: 2px solid #1d242b;
+        background-color: #FFFFFF;
+    }
+
+    #inLine{
+        background-color: #ECECEC;
+    }
+
+    #outLine{
+        background-color: #1ECC94;
+    }
+
+    #sliderBtn{
+        border: none;
+
+        border-radius: 2px;
+        background-color: #1ECC94;
+    }
+
+)";
+
+
+
+
+
+
 
 
 
