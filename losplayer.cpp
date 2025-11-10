@@ -89,6 +89,16 @@ void LosPlayer::initConnect()
     connect(ui->minBtn,&QPushButton::clicked,this,&LosPlayer::onMinimizeButtonClicked);
     connect(ui->volume,&QPushButton::clicked,this,&LosPlayer::onVolumeClicked);
     connect(ui->addLocalBtn,&QPushButton::clicked,this,&LosPlayer::onAddLocalBtnClicked);
+
+    connect(&l_musicList,&MusicList::_oneMusicDone,this,[this](Music* music){
+        Toast::showMsg(music->getMusicName() + " 加载完毕");
+        ui->localPage->addMusic(music);
+
+    });
+
+    connect(&l_musicList,&MusicList::_allMusicDone,this,[this](){
+        ui->localPage->reFresh(l_musicList);
+    });
 }
 
 void LosPlayer::initUi()
@@ -145,6 +155,11 @@ void LosPlayer::initUi()
     ui->localPage->setMusicPageUi("本地",":/png/localPage.png");
     ui->recentPage->setMusicPageUi("最近",":/png/recentPage.png");
 
+    ui->likePage->setMusicListType(MUSIC_LISTS_TYPE::LIKE_LIST);
+
+    ui->localPage->setMusicListType(MUSIC_LISTS_TYPE::LOCAL_LIST);
+
+    ui->recentPage->setMusicListType(MUSIC_LISTS_TYPE::HISTORY_LIST);
 
     volumeTool = new VolumeTool(this);
 
@@ -274,12 +289,11 @@ void LosPlayer::onAddLocalBtnClicked()
     // 设置窗口标题
     fileDialog.setWindowTitle("添加本地下载音乐");
 
-
     QDir curDir = QDir::current();
     curDir.cdUp();
     curDir.cdUp();
 
-    QString path = curDir.absolutePath();
+    QString path = "G:\\music\\";
 
     // 设置过滤方式
     fileDialog.setDirectory(path);
@@ -296,6 +310,10 @@ void LosPlayer::onAddLocalBtnClicked()
 
     if(QDialog::Accepted == fileDialog.exec())
     {
+        // 切换到本地下载的界面
+        onGetPageid(4);
+
+
         QList<QUrl> fileUrls = fileDialog.selectedUrls();
 
         // 内部存放的是文件的路径
@@ -303,8 +321,6 @@ void LosPlayer::onAddLocalBtnClicked()
         // 将文件信息
 
         // 保存到本地下载界面
-
-        //
         l_musicList.addMusic(fileUrls);
     }
 

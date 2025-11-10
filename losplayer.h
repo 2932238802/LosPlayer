@@ -12,6 +12,7 @@
 #include "volumeTool.h"
 #include"common/myLog.h"
 #include"style/style.h"
+#include"toast.h"
 
 namespace Ui {
 class LosPlayer;

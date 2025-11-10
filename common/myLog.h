@@ -12,3 +12,8 @@ inline static QString getFileName(const QString& path)
 #define TAG QString("[%1,%2]").arg(getFileName(__FILE__),QString::number(__LINE__))
 #define LOG() qDebug().noquote()<<TAG
 
+enum MUSIC_LISTS_TYPE{
+    LIKE_LIST,
+    LOCAL_LIST,
+    HISTORY_LIST
+};

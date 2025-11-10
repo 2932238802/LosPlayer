@@ -7,7 +7,7 @@
 #include <QMediaMetaData>
 #include "common/myLog.h"
 
-class Music  : public QObject
+class Music : public QObject
 {
     Q_OBJECT
 public:
@@ -36,26 +36,20 @@ private:
 private slots:
     void onLoadMusicDone();
 
+signals:
+    void _musicLoadOver();
+
 private:
     QString l_musicId;
-
     QString l_musicName;
-
     QString l_musicSinger;
-
     QString l_album;
-
     QUrl l_musicUrl;
-
-    // 就是longlong
     qint64 l_duration;
-
     bool l_isHistory;
-
     bool l_isLike;
-
     QMediaPlayer*player;
-signals:
+
 };
 
 

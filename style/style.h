@@ -123,6 +123,9 @@ inline QString COMMON_PAGE_TITLESTYLE = R"(
     }
 )";
 
+
+//////////////////////////////////////////////////////
+/// listitem 的样式
 inline QString LIST_ITEM_VIP_LABEL = R"(
     #vipLabel{
         border: 1px solid #1ECD96;
@@ -149,6 +152,24 @@ inline const QString LISTITEM_STYLE = R"(
         background-color: rgb(241,147,156);
     }
 )";
+
+inline const QString LIST_ITEM_LIKEBTN_CLICKED = R"(
+    #likeBtn
+    {
+        color: #d67177;
+    }
+
+)";
+
+inline const QString LIST_ITEM_LIKEBTN_UNCLICKED = R"(
+    #likeBtn
+    {
+        color: #d2eae8;
+    }
+)";
+//////////////////////////////////////////////////////
+
+
 
 inline const QString MUSIC_SLIDER = R"(
     #inLine{
@@ -196,10 +217,44 @@ inline const QString  VOLUME_TOOL = R"(
 )";
 
 
+///////////////////////////////////
+/// commonPage的样式
+inline const QString MUSIC_LIST_STYLE = R"(
+    #musicList::item:selected{
+        background-color: rgb(200,200,200);
+    }
+
+    QScrollBar:vertical{
+        border:none;
+        width: 15px;
+        background-color:#FFFFFF;
+        margin: 0px 0px 0px 0px
+    }
+
+    QScrollBar::handle:vertical
+    {
+        width: 10px;
+        background-color: #FEFEFE;
+        border-radius: 5px;
+        min-height: 15px;
+    }
+
+
+)";
 
 
 
+///////////////////////////////////
+inline const QString TOAST_BG = R"(
+    background-color: rgba(102,102,102,0.5);
+    border-radius: 4px;
+)";
+inline const QString TOAST_LABEL = R"(
 
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #FFFFFF;
+)";
 
 
 

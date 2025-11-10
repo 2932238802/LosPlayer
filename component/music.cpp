@@ -6,12 +6,8 @@ Music::Music(QUrl url,QObject *parent)
     this->l_musicUrl = url;
     l_musicId = QUuid::createUuid().toString();
     player = new QMediaPlayer(this);
-
     connect(player,&QMediaPlayer::metaDataChanged,this,&Music::onLoadMusicDone);
-
-
     parseData();
-
 }
 
 
@@ -99,11 +95,7 @@ void Music::onLoadMusicDone()
     l_musicSinger = metaData.value(QMediaMetaData::Author).toString();
     l_duration = metaData.value(QMediaMetaData::Duration).toLongLong();
 
-    LOG() << "onLoadMusicDone()";
-    LOG() << "l_musicName: " << l_musicName;
-    LOG() << "l_album: " << l_album;
-    LOG() << "l_musicSinger: " << l_musicSinger;
-    LOG() << "l_duration: " << l_duration;
+    emit _musicLoadOver();
 }
 //////////////////
 

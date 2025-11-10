@@ -14,6 +14,7 @@ void MusicList::addMusic(const QList<QUrl> &music_urls)
 {
     LOG() << "MusicList::addMusic(const QList<QUrl> &music_urls)";
     LOG() << "music_urls.size()" << music_urls.size();
+
     for(const auto& a:music_urls )
     {
         QMimeDatabase mimeDB;
@@ -23,7 +24,22 @@ void MusicList::addMusic(const QList<QUrl> &music_urls)
         {
             LOG() << "path : " << a ;
             Music* music = new Music(a);
+
+            l_pendingMusicCount++;
             musics.push_back(std::move(music));
+
+            connect(music,&Music::_musicLoadOver,this,[this,music](){
+                l_pendingMusicCount--;
+
+                emit _oneMusicDone(music);
+
+                if(l_pendingMusicCount == 0)
+                    {
+                    emit _allMusicDone();
+                }
+            });
+
+
         }
         else{
             LOG() << "path: " << a;
@@ -32,3 +48,49 @@ void MusicList::addMusic(const QList<QUrl> &music_urls)
     }
 }
 //////////////////////////////
+
+
+//////////////////////////////
+/// \brief MusicList::findMusicByMusicId
+/// \param musicId
+/// \return
+///
+qm_iter MusicList::findMusicByMusicId(const QString &musicId)
+{
+    for(auto i = musics.begin(); i != musics.end();i++)
+    {
+        if((*i)->getUuid() == musicId)
+        {
+            return i;
+        }
+    }
+    return end();
+}
+//////////////////////////////
+
+
+//////////////////////////////
+/// \brief MusicList::begin
+/// \return
+///
+qm_iter MusicList::begin()
+{
+    return musics.begin();
+}
+//////////////////////////////
+
+
+//////////////////////////////
+/// \brief MusicList::end
+/// \return
+///
+qm_iter MusicList::end()
+{
+    return musics.end();
+}
+//////////////////////////////
+
+
+
+
+

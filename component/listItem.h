@@ -18,11 +18,21 @@ public:
 
     void enterEvent(QEnterEvent* event) override;
     void leaveEvent(QEvent* event) override;
+    void setMusicName(const QString& music_name);
+    void setMusicSinger(const QString& music_singer);
+    void setMusicAlbum(const QString& music_album);
+    void setLike(bool is_like);
 
 private:
     void initUi();
+    void initConnect();
 
 private:
+    void onLikeBtnClicked();
+
+
+private:
+    bool l_isLike;
     Ui::ListItem *ui;
 };
 
