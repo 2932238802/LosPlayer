@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <qfiledialog.h>
+#include <QMediaPlayer>
 #include "musicList.h"
 #include "volumeTool.h"
 #include"common/myLog.h"
@@ -33,8 +34,10 @@ protected:
 private:
     void initConnect();
     void initUi();
+
     QJsonArray initNameAndPng();
     QString generateRandStr(int lenth);
+
 
 public slots:
     void onGetPageid(int page_id);
@@ -42,6 +45,7 @@ public slots:
     void onVolumeClicked();
     void onAddLocalBtnClicked();
     void onUpdataLikeMusicAndPage(bool,const QString&);
+    void onPlayMusic();
 
 private:
     QMap<int,QString> btnIdAndName;
@@ -53,6 +57,8 @@ private:
     bool volumeIsShow =false;
 
     MusicList l_musicList;
+
+    QMediaPlayer* l_player;
 
 };
 

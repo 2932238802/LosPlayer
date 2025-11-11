@@ -68,6 +68,55 @@ inline const QString GLOBAL_STYLE_SHEET = R"(
         background-color: #000000;
         border: 2px solid rgb(85, 255, 255);
     }
+
+    #addLocalBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #addLocalBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
+    #playBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #playBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
+    #playDownBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #playDownBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
+    #playModeBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #playModeBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
+    #playUpBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #playUpBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
+    #volumeBtn{
+        background-color: #FFFFFF;
+        color: black;
+    }
+    #volumeBtn:hover{
+        background-color: rgb(100,100,100);
+    }
+
 )";
 
 
@@ -255,6 +304,9 @@ inline const QString TOAST_LABEL = R"(
     font-size: 14px;
     color: #FFFFFF;
 )";
+
+
+
 
 
 

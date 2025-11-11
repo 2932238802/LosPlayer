@@ -22,11 +22,19 @@ void MusicList::addMusic(const QList<QUrl> &music_urls)
 
         if(mt.name() == "audio/mpeg" || mt.name() == "audio/flac" || mt.name() == "audio/wav")
         {
-            LOG() << "path : " << a ;
-            Music* music = new Music(a);
+            LOG() << "原始 path : " << a;
+
+            QString localFilePath = a.toLocalFile();
+            LOG() << "转换后的本地路径字符串 : " << localFilePath;
+
+            QUrl cleanUrl = QUrl::fromLocalFile(localFilePath);
+            LOG() << "“净化”后的 URL : " << cleanUrl;
+
+            Music* music = new Music(cleanUrl);
 
             l_pendingMusicCount++;
-            musics.push_back(std::move(music));
+
+            musics.push_back(music);
 
             connect(music,&Music::_musicLoadOver,this,[this,music](){
                 l_pendingMusicCount--;

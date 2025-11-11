@@ -742,7 +742,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="volume">
+                 <widget class="QPushButton" name="volumeBtn">
                   <property name="minimumSize">
                    <size>
                     <width>30</width>

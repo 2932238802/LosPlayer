@@ -87,7 +87,7 @@ void LosPlayer::initConnect()
     connect(ui->audio,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
     connect(ui->recent,&BtFrom::_pageId,this,&LosPlayer::onGetPageid);
     connect(ui->minBtn,&QPushButton::clicked,this,&LosPlayer::onMinimizeButtonClicked);
-    connect(ui->volume,&QPushButton::clicked,this,&LosPlayer::onVolumeClicked);
+    connect(ui->volumeBtn,&QPushButton::clicked,this,&LosPlayer::onVolumeClicked);
     connect(ui->addLocalBtn,&QPushButton::clicked,this,&LosPlayer::onAddLocalBtnClicked);
 
     connect(&l_musicList,&MusicList::_oneMusicDone,this,[this](Music* music){
@@ -102,8 +102,9 @@ void LosPlayer::initConnect()
     connect(ui->likePage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
     connect(ui->localPage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
     connect(ui->recentPage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
-}
 
+    connect(ui->playBtn,&QPushButton::clicked,this,&LosPlayer::onPlayMusic);
+}
 
 void LosPlayer::initUi()
 {
@@ -169,8 +170,11 @@ void LosPlayer::initUi()
 
     volumeTool->hide();
 
+    l_player = new QMediaPlayer(this);
 }
 ////////////////////////////
+
+
 
 
 ////////////////////////////
@@ -208,6 +212,22 @@ QString LosPlayer::generateRandStr(int lenth)
         ans.append(c);
     }
     return ans;
+}
+////////////////////////////
+
+
+
+////////////////////////////
+/// \brief LosPlayer::onPlayMusic
+///
+void LosPlayer::onPlayMusic()
+{
+    //l_player;
+
+    l_player->setSource((*(l_musicList.begin()))->getUrl());
+
+    // 播放
+    l_player->play();
 }
 ////////////////////////////
 
@@ -273,8 +293,8 @@ void LosPlayer::onVolumeClicked()
 
     }
     else{
-        QPoint volumeGlobalPos = ui->volume->mapToGlobal(QPoint(0, 0));
-        int globalX = volumeGlobalPos.x() + ui->volume->width() / 2 - volumeTool->width() / 2;
+        QPoint volumeGlobalPos = ui->volumeBtn->mapToGlobal(QPoint(0, 0));
+        int globalX = volumeGlobalPos.x() + ui->volumeBtn->width() / 2 - volumeTool->width() / 2;
         int globalY = volumeGlobalPos.y() - volumeTool->height() - 5;
         QPoint globalTargetPos(globalX, globalY);
         volumeTool->move(globalTargetPos);
