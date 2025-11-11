@@ -17,7 +17,6 @@ public:
     void addMusic(const QList<QUrl>& music_urls);
     qm_iter findMusicByMusicId(const QString & musicId);
 
-
     qm_iter begin();
     qm_iter end();
 

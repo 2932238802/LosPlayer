@@ -30,6 +30,9 @@ private:
 private:
     void onLikeBtnClicked();
 
+signals:
+    // commonPage
+    void _setIsLike(bool is_like);
 
 private:
     bool l_isLike;

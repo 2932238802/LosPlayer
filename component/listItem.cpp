@@ -115,6 +115,8 @@ void ListItem::onLikeBtnClicked()
 {
     l_isLike = !l_isLike;
     setLike(l_isLike);
+
+    emit _setIsLike(l_isLike);
 }
 ////////////////////////////////////
 

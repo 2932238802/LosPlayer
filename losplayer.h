@@ -41,6 +41,7 @@ public slots:
     void onMinimizeButtonClicked();
     void onVolumeClicked();
     void onAddLocalBtnClicked();
+    void onUpdataLikeMusicAndPage(bool,const QString&);
 
 private:
     QMap<int,QString> btnIdAndName;

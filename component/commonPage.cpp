@@ -78,18 +78,18 @@ void CommonPage::setMusicPageUi(const QString &str, const QString &path)
 /////////////////////
 /// \brief CommonPage::addMusicToMusicPage
 /// \param list
-///
-void CommonPage::addMusicToMusicPage(MusicList &list)
-{
-    for(auto a:list)
-    {
-        auto pos = std::find(musicOfPage.begin(),musicOfPage.end(),a->getUuid());
-        if(pos==musicOfPage.end())
-        {
-            addMusic(a);
-        }
-    }
-}
+/// 把自身的 music 更新到界面上面
+// void CommonPage::addMusicToMusicPage(MusicList &list)
+// {
+//     for(auto a:list)
+//     {
+//         auto pos = std::find(musicOfPage.begin(),musicOfPage.end(),a->getUuid());
+//         if(pos==musicOfPage.end())
+//         {
+//             addMusic(a);
+//         }
+//     }
+// }
 /////////////////////
 
 
@@ -137,10 +137,11 @@ void CommonPage::addMusic(Music *music)
 /// 负责将歌曲的信息 更新到界面上
 void CommonPage::reFresh(MusicList &music_list)
 {
+    if(!l_needToFresh) return;
+
+    l_needToFresh = false; // 刷新之后
+
     LOG() << "CommonPage::reFresh(MusicList &music_list)";
-
-
-
 
     for(auto music_id: musicOfPage)
     {
@@ -148,21 +149,40 @@ void CommonPage::reFresh(MusicList &music_list)
             continue;
         }
 
+        // 从外面 判断是不是出现过了
         auto it = music_list.findMusicByMusicId(music_id);
 
         ListItem* item = new ListItem(this);
 
         // 设置歌曲名称
+        item->setLike((*it)->getLiked());
         item->setMusicAlbum((*it)->getMusicAlbum());
         item->setMusicName((*it)->getMusicName());
         item->setMusicSinger((*it)->getMusicSinger());
 
         QListWidgetItem * widgetItem = new QListWidgetItem(ui->musicList);
         widgetItem->setSizeHint(QSize(item->width(),item->height()));
-
         widgetItem->setData(Qt::UserRole,music_id);
         ui->musicList->setItemWidget(widgetItem,item);
+
+        // 收到 listitem 更新 喜欢的信息 然后 发送给主要界面
+        // TODO 这里 感觉要优化
+        connect(item,&ListItem::_setIsLike,this,[=](bool is_like){
+            (*it)->setLiked(is_like);
+            emit _updataLikeMusic(is_like,(*it)->getUuid());
+        });
     }
+}
+/////////////////////
+
+
+/////////////////////
+/// \brief CommonPage::setNeedFreshState
+/// \param state
+///
+void CommonPage::setNeedFreshState(bool state)
+{
+    l_needToFresh = state;
 }
 /////////////////////
 

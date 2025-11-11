@@ -93,13 +93,17 @@ void LosPlayer::initConnect()
     connect(&l_musicList,&MusicList::_oneMusicDone,this,[this](Music* music){
         Toast::showMsg(music->getMusicName() + " 加载完毕");
         ui->localPage->addMusic(music);
-
     });
 
     connect(&l_musicList,&MusicList::_allMusicDone,this,[this](){
         ui->localPage->reFresh(l_musicList);
     });
+
+    connect(ui->likePage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
+    connect(ui->localPage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
+    connect(ui->recentPage,&CommonPage::_updataLikeMusic,this,&LosPlayer::onUpdataLikeMusicAndPage);
 }
+
 
 void LosPlayer::initUi()
 {
@@ -222,7 +226,6 @@ void LosPlayer::onGetPageid(int page_id)
         BtFrom* newBtFrom = this->findChild<BtFrom*>(newBtnName);
         BtFrom* lastBtFrom = this->findChild<BtFrom*>(lastBtn);
 
-
         if (lastBtFrom && newBtFrom && newBtnName!=lastBtn) {
             lastBtFrom->setProperty("clicked", false);
             newBtFrom->setProperty("clicked", true);
@@ -239,6 +242,9 @@ void LosPlayer::onGetPageid(int page_id)
         }
 
         lastBtn = newBtnName;
+
+        auto currentPage =qobject_cast<CommonPage*>(ui->stackedWidget->currentWidget());
+        currentPage->reFresh(l_musicList);
     }
 }
 ////////////////////////////
@@ -322,10 +328,36 @@ void LosPlayer::onAddLocalBtnClicked()
 
         // 保存到本地下载界面
         l_musicList.addMusic(fileUrls);
+
+        ui->localPage->setNeedFreshState(true);
     }
 
 }
+////////////////////////////
 
+
+
+////////////////////////////
+/// \brief LosPlayer::onUpdataLikeMusicAndPage
+/// \param is_like
+/// \param str
+///
+void LosPlayer::onUpdataLikeMusicAndPage(bool is_like, const QString &str)
+{
+    auto  it= l_musicList.findMusicByMusicId(str);
+
+    if(it != l_musicList.end())
+    {
+        LOG() << "音乐名字为: " << (*it)->getMusicName() << " 添加为喜欢";
+        (*it)->setLiked(true);
+    }
+
+    ui->likePage->addMusic(*it);
+
+    ui->localPage->setNeedFreshState(true);
+    ui->likePage->setNeedFreshState(true);
+    ui->recentPage->setNeedFreshState(true);
+}
 ////////////////////////////
 
 
